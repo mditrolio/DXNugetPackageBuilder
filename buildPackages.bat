@@ -1,4 +1,4 @@
-set DXVersion=15.1
+set DXVersion=16.2
 set SymbolsFolder=c:\tmp\symbols
 set TargetNugetFolder=C:\tmp\Nuget
 set Localization=de;es;ja;ru
@@ -14,7 +14,7 @@ Powershell.exe -executionpolicy remotesigned -File  build.ps1
 
 set Builder=src\DXNugetPackageBuilder\bin\Debug\DXNugetPackageBuilder.exe
 
-%Builder% "C:\Program Files (x86)\DevExpress %DXVersion%\DevExpressCodedUIExtensions\Tools" %SymbolsFolder% %TargetNugetFolder% %Localization% %NugetServer% %NugetApiKey% %NugetPush%
+REM %Builder% "C:\Program Files (x86)\DevExpress %DXVersion%\DevExpressCodedUIExtensions\Tools" %SymbolsFolder% %TargetNugetFolder% %Localization% %NugetServer% %NugetApiKey% %NugetPush%
 
 %Builder% "C:\Program Files (x86)\DevExpress %DXVersion%\Components\Tools\eXpressAppFramework\Model Editor" %SymbolsFolder% %TargetNugetFolder% %Localization% %NugetServer% %NugetApiKey% %NugetPush%
 
