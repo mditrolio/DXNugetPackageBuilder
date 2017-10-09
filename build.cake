@@ -1,32 +1,12 @@
 var target = Argument("target", "Default");
 
-Task("Paket-Bootstrapper")
+Task("Package-Restore")
 	.Does(() =>
 {
-	StartProcess(".paket/paket.bootstrapper.exe", new ProcessSettings{
-      WorkingDirectory = ".",
-      Arguments = ""
-   });   	
-});
-
-Task("Paket-Restore")
-	.IsDependentOn("Paket-Bootstrapper")
-	.Does(() =>
-{
-	StartProcess(".paket/paket.exe", new ProcessSettings{
+	StartProcess("dotnet", new ProcessSettings{
       WorkingDirectory = ".",
       Arguments = "restore"
-   });   	
-});
-
-Task("Paket-Install")
-	.IsDependentOn("Paket-Bootstrapper")
-	.Does(() =>
-{
-	StartProcess(".paket/paket.exe", new ProcessSettings{
-      WorkingDirectory = ".",
-      Arguments = "install"
-   });   	
+   });
 });
 
 
@@ -39,7 +19,7 @@ Task("Clean")
 
 Task("Build")
 	.IsDependentOn("Clean")
-	.IsDependentOn("Paket-Install")	
+	.IsDependentOn("Package-Restore")
 	.Does(() =>
 {
 	DotNetBuild("./DXNugetPackageBuilder.sln");

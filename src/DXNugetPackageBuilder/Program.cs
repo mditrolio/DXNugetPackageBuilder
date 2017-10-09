@@ -4,8 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Security.Policy;
-using System.Text;
+
 using NuGet;
 
 namespace DXNugetPackageBuilder
@@ -130,7 +129,7 @@ namespace DXNugetPackageBuilder
                     {
 
                         var assembly = Assembly.LoadFile(file);
-                     
+
                         var pdbFile = Path.ChangeExtension(Path.GetFileName(file), "pdb");
 
                         pdbFile = Path.Combine(arguments.PdbDirectory, pdbFile);
@@ -202,7 +201,7 @@ namespace DXNugetPackageBuilder
 
 
                             var refAssemblyVersion = refAssembly.Version;
-                            
+
                             var minVersion = new SemanticVersion(new Version(refAssemblyVersion.Major, refAssemblyVersion.Minor, refAssemblyVersion.Build));
                             var maxVersion = new SemanticVersion(new Version(refAssemblyVersion.Major, refAssemblyVersion.Minor, refAssemblyVersion.Build + 1));
 
