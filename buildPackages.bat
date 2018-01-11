@@ -1,4 +1,5 @@
-set DXVersion=15.2
+@echo off
+set DXVersion=17.2
 set SymbolsFolder=c:\tmp\symbols
 set TargetNugetFolder=C:\tmp\Nuget
 set Localization=de;es;ja;ru
@@ -10,12 +11,12 @@ set NugetPush=
 REM set NugetPush=-NugetPush
 
 
-Powershell.exe -executionpolicy remotesigned -File  build.ps1
+pwsh.exe -executionpolicy remotesigned -File  build.ps1
 
-set Builder=src\DXNugetPackageBuilder\bin\Debug\DXNugetPackageBuilder.exe
+set Builder=src\DXNugetPackageBuilder\bin\Debug\net461\DXNugetPackageBuilder.exe
 
-%Builder% "C:\Program Files (x86)\DevExpress %DXVersion%\DevExpressCodedUIExtensions\Tools" %SymbolsFolder% %TargetNugetFolder% %Localization% %NugetServer% %NugetApiKey% %NugetPush%
+REM %Builder% "C:\Program Files (x86)\DevExpress %DXVersion%\DevExpressCodedUIExtensions\Tools" %SymbolsFolder% %TargetNugetFolder% %Localization% %NugetServer% %NugetApiKey% %NugetPush%
 
-%Builder% "C:\Program Files (x86)\DevExpress %DXVersion%\Components\Tools\eXpressAppFramework\Model Editor" %SymbolsFolder% %TargetNugetFolder% %Localization% %NugetServer% %NugetApiKey% %NugetPush%
+REM %Builder% "C:\Program Files (x86)\DevExpress %DXVersion%\Components\Tools\eXpressAppFramework\Model Editor" %SymbolsFolder% %TargetNugetFolder% %Localization% %NugetServer% %NugetApiKey% %NugetPush%
 
 %Builder% "C:\Program Files (x86)\DevExpress %DXVersion%\Components\Bin\Framework" %SymbolsFolder% %TargetNugetFolder% %Localization% %NugetServer% %NugetApiKey% %NugetPush%
