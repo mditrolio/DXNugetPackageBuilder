@@ -1,5 +1,5 @@
 @echo off
-set DXVersion=17.2
+set DXVersion=17.1
 set SymbolsFolder=c:\tmp\symbols
 set TargetNugetFolder=C:\tmp\Nuget
 set Localization=de;es;ja;ru
@@ -11,7 +11,7 @@ set NugetPush=
 REM set NugetPush=-NugetPush
 
 
-pwsh.exe -executionpolicy remotesigned -File  build.ps1
+powershell -executionpolicy remotesigned -File  build.ps1
 
 set Builder=src\DXNugetPackageBuilder\bin\Debug\net461\DXNugetPackageBuilder.exe
 
